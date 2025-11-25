@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Encurtador de URL</title>
+  <style>
+    body{font-family: Arial,Helvetica,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;background:#f4f4f4}
+    .card{background:white;padding:20px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.08);width:360px}
+    input,button{width:100%;padding:10px;margin-top:8px;border-radius:6px;border:1px solid #ccc}
+    small{color:#666}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Encurtador de URL</h2>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for m in messages %}
+            <li style="color:#b00">{{ m }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form method="post">
+      <label>URL original</label>
+      <input name="original_url" placeholder="https://exemplo.com/..." required />
+      <label>Código personalizado (opcional)</label>
+      <input name="custom_code" placeholder="meu-codigo (sem espaços)" />
+      <button type="submit">Encurtar</button>
+    </form>
+    <p><small>Dica: inclua http:// ou https://</small></p>
+  </div>
+</body>
+</html>

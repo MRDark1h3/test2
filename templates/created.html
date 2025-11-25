@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Encurtado!</title>
+  <style>
+    body{font-family: Arial,Helvetica,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;background:#eef9f6}
+    .card{background:white;padding:20px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.08);width:420px}
+    input,button{width:100%;padding:10px;margin-top:8px;border-radius:6px;border:1px solid #ccc}
+    a.button{display:inline-block;padding:10px 12px;border-radius:6px;text-decoration:none;background:#2b9a6b;color:white;margin-top:10px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Prontinho 🎉</h2>
+    <p>URL original: <br/><small>{{ original }}</small></p>
+    <p>Encurtada:</p>
+    <input id="shorturl" readonly value="{{ short }}" />
+    <a class="button" href="{{ short }}" target="_blank">Abrir</a>
+    <button onclick="copy()">Copiar</button>
+    <p><a href="{{ url_for('index') }}">Criar outra</a></p>
+  </div>
+<script>
+function copy(){
+  const el = document.getElementById('shorturl');
+  el.select();
+  document.execCommand('copy');
+  alert('Copiada para a área de transferência!');
+}
+</script>
+</body>
+</html>
